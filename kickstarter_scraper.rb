@@ -4,6 +4,7 @@ require 'pry'
 def create_project_hash
   html = File.read('fixtures/kickstarter.html')
   kickstarter = Nokogiri::HTML(html)
+  # set up a loop to iterate through the projects (and also an empty projects hash, which we will fill up with scraped data)
   projects = {}
   #Iterate through the projects
   kickstarter.css("li.project.grid_4").each do |project|
@@ -26,5 +27,3 @@ end
 # description: project.css("p.bbcard_blurb").text
 # location: project.css("ul.project-meta span.location-name").text
 # percent_funded: project.css("ul.project-stats li.first.funded strong").text.gsub("%","").to_i
-
-
